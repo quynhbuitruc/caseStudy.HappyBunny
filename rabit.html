@@ -8,54 +8,18 @@
     <style>
         canvas {
             border: 3px solid darkgreen;
-            height: 500px;
-            width: 500px
+            height: 550px;
+            width: 550px
         }
     </style>
+    <script src="bunny.js"></script>
 </head>
 
 <body>
+    Strenth: <p id="strength"></p>
+    Growth: <p id="growth"></p>
     <canvas id="game"></canvas>
-    <img id="bunny" src="bunny.png" alt="happyBunny"
-        style="width:50px; height:50px; position:relative; top:0px; left:0">
-    <script>
-        let ctx = document.getElementById("game").getConText("2d")
-        let image = document.getElementById("bunny")
-        ctx.drawImage(image, 0, 0)
-
-        let Rabit = function (name) {
-            this.name = name
-            this.strength = 10
-            this.growth = 0
-            this.jumpOneStep = function () {
-
-
-            }
-            this.eatCarrot = function () {
-                this.growth++
-                switch (this.growth) {
-                    case 10:
-
-                }
-            }
-            this.drinkWater = function () {
-                this.strength++
-            }
-            this.collectStone = function () {
-                if (this.strength > 0) {
-                    this.strength--
-                } else {
-                    this.growth--
-                    this.strength++
-                }
-            }
-            this.sleep = function () {
-                if (this.strength = 0) {
-
-                }
-            }
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
