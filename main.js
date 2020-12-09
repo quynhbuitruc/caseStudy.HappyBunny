@@ -1,2 +1,8 @@
-let bunny = new Rabits ()
-bunny.draw()
+let canvas = document.getElementById("game")
+
+window.requestAnimationFrame(tick)
+
+function tick() {
+  game.draw()
+  window.requestAnimationFrame(tick)
+}
