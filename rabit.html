@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Happy Rabit </title>
+    <style>
+        canvas {
+            border: 1px solid darkgreen;
+            height: 500px; width: 500px
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="game"></canvas>
+    <script>
+        let ctx = document.getElementById("game").getConText("2d") 
+        let Rabit = function (name) {
+            this.name = name
+            this.strength = 10
+            this.growth = 0
+            this.jumpOneStep = function () {
+                document.addEventListener("onkeydown", function () {
+                    
+                })
+                if (this.strength > 0) {
+                    this.strength--
+                }
+
+            }
+            this.eatCarrot = function () {
+                this.growth++
+                switch (this.growth) {
+                    case 10:
+
+                }
+            }
+            this.drinkWater = function () {
+                this.strength++
+            }
+            this.collectStone = function () {
+                if (this.strength > 0) {
+                    this.strength--
+                } else {
+                    this.growth--
+                    this.strength++
+                }
+            }
+            this.sleep = function () {
+                if (this.strength = 0) {
+
+                }
+            }
+        }
+
+        let Carrot = function () {
+            this.nutrition = 1 // for growth
+        }
+
+        let Water = function () {
+            this.power = 5 // for strength
+        }
+
+        let Stone = function () {
+            this.value = 1
+        }
+
+        let StoneCave = function () {
+            this.area = 10
+            this.checkStone = function () {
+                return
+            }
+            this.compareToRabitGrowth = function (Rabit) {
+                return
+            }
+            this.getsBigger = function (Stone) {
+                this.area += 10
+            }
+        }
+    </script>
+</body>
+
+</html>
