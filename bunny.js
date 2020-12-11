@@ -6,4 +6,9 @@ function Rabits() {
         img.src = "bunny.png"
         ctx.drawImage(img, this.x, this.y)
     }
+    this.moveRight = function (ctx) {
+        ctx.clearRect(this.x, this.y, 50, 50)
+        this.x +=50
+        ctx.drawImage(img, this.x, this.y)
+    }
 }
