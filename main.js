@@ -9,6 +9,7 @@ window.onkeydown = function (event) {
 
 function tick() {
     game.drawBunny()
+    game.drawCarrots()
     window.requestAnimationFrame(tick)
 }
 
