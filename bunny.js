@@ -13,5 +13,11 @@ function Rabits() {
         }
         ctx.drawImage(img, this.x, this.y)
     }
-    
+    this.moveLeft = function (ctx) {
+        ctx.clearRect(this.x, this.y, 50, 50)
+        if (this.x > 10) {
+            this.x -= 10
+        }
+        ctx.drawImage(img, this.x, this.y)
+    }
 }
