@@ -30,7 +30,7 @@ function Rabits() {
     this.moveDown = function (ctx) {
         ctx.clearRect(this.x, this.y, 50, 50)
         if (this.y + 50 < 550) {
-            this.y -= 10
+            this.y += 10
         }
         ctx.drawImage(img, this.x, this.y)
     }
