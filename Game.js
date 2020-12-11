@@ -3,6 +3,7 @@ function Game(canvas) {
 
   let ctx = this.canvas.getContext("2d");
   let bunny = new Rabits()
+  let carrot = new Carrots()
 
   this.drawBunny = function () {
     bunny.draw(ctx)
@@ -23,5 +24,9 @@ function Game(canvas) {
         bunny.moveDown(ctx)
         break
     }
+  }
+
+  this.drawCarrots = function () {
+    carrot.draw(ctx)
   }
 }
