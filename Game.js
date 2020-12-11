@@ -13,8 +13,15 @@ function Game(canvas) {
       case 39:
         bunny.moveRight(ctx)
         break
-        case 37:
-          bunny.moveLeft(ctx)
+      case 37:
+        bunny.moveLeft(ctx)
+        break
+      case 38:
+        bunny.moveUp(ctx)
+        break
+      case 40:
+        bunny.moveDown(ctx)
+        break
     }
   }
 }
