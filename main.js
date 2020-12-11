@@ -2,8 +2,9 @@ let canvas = document.getElementById("game")
 let game = new Game(canvas)
 window.requestAnimationFrame(tick)
 
-window.onkeypress = function (event) {
-    game.controlBunny(event.keyCode)
+window.onkeydown = function (event) {
+    console.log(event)
+    game.controlBunnyMove(event.keyCode)
 }
 
 function tick() {
