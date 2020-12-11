@@ -27,6 +27,13 @@ function Game(canvas) {
   }
 
   this.drawCarrots = function () {
-    carrot.draw(ctx)
+    carrot.draw(ctx, bunny)
+  }
+
+  this.bunnyGotCarrot = function () {
+    if (Math.abs((bunny.x + bunny.width / 2) - (carrot.x + carrot.width / 2)) <= (bunny.width + carrot.width) / 2) {
+      console.log("ăn")
+      carrot.eraseCarrot(ctx)
+    }
   }
 }
