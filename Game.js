@@ -12,6 +12,15 @@ function Game(canvas) {
     carrot.draw(ctx)
   }
 
+  this.score = 0
+  this.getScore = function () {
+    return this.score
+  }
+  this.showScores = function () {
+    let number = this.getScore()
+    document.getElementById("score").innerText = number
+  }
+
   this.controlBunnyMove = function (keyCode) {
     switch (keyCode) {
       case 39:
@@ -31,6 +40,8 @@ function Game(canvas) {
 
   this.calculateNextStatus = function () {
     if (bunnyGotCarrots() == true) {
+      this.score ++
+      this.showScores()
       carrot = new Carrots()
     }
   }
