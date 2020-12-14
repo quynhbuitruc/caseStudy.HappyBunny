@@ -2,11 +2,14 @@ function Game(canvas) {
   this.canvas = canvas
 
   let ctx = this.canvas.getContext("2d");
+
   let bunny = new Rabits()
   let carrot = new Carrots()
 
-  this.drawBunny = function () {
+  this.draw = function () {
+    ctx.clearRect(0,0,550,550)
     bunny.draw(ctx)
+    carrot.draw(ctx)
   }
 
   this.controlBunnyMove = function (keyCode) {
@@ -26,14 +29,5 @@ function Game(canvas) {
     }
   }
 
-  this.drawCarrots = function () {
-    carrot.draw(ctx, bunny)
-  }
-
-  this.bunnyGotCarrot = function () {
-    if (Math.abs((bunny.x + bunny.width / 2) - (carrot.x + carrot.width / 2)) <= (bunny.width + carrot.width) / 2) {
-      console.log("ăn")
-      carrot.eraseCarrot(ctx)
-    }
-  }
 }
+ 
