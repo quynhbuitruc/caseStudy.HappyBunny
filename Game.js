@@ -7,7 +7,7 @@ function Game(canvas) {
   let carrot = new Carrots()
 
   this.draw = function () {
-    ctx.clearRect(0,0,550,550)
+    ctx.clearRect(0, 0, 550, 550)
     bunny.draw(ctx)
     carrot.draw(ctx)
   }
@@ -30,16 +30,18 @@ function Game(canvas) {
   }
 
   this.calculateNextStatus = function () {
-    if (bunnyGotCarrots() == true ) {
+    if (bunnyGotCarrots() == true) {
       carrot = new Carrots()
     }
   }
   function bunnyGotCarrots() {
-    if (bunny.getLeft() < (carrot.x + 30) && (carrot.x + 30) < bunny.getLeft()+50) {
-      return true
+    if (bunny.getLeft() < (carrot.x + 30) && (carrot.x + 30) < bunny.getLeft() + 50) {
+      if (bunny.getTop() < (carrot.y + 30) && (carrot.y + 30) < bunny.getTop() + 50) {
+        return true
+      }
     } else {
       return false
     }
   }
 }
- 
+
