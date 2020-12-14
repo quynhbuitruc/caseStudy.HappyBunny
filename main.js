@@ -1,5 +1,6 @@
 let canvas = document.getElementById("game")
 let game = new Game(canvas)
+
 window.requestAnimationFrame(tick)
 
 window.onkeydown = function (event) {
@@ -7,9 +8,7 @@ window.onkeydown = function (event) {
 }
 
 function tick() {
-    game.drawBunny()
-    game.drawCarrots()
-    game.bunnyGotCarrot()
+    game.calculateNextStatus()
+    game.draw()
     window.requestAnimationFrame(tick)
 }
-
