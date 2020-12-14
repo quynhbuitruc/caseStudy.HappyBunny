@@ -29,5 +29,17 @@ function Game(canvas) {
     }
   }
 
+  this.calculateNextStatus = function () {
+    if (bunnyGotCarrots() == true ) {
+      carrot = new Carrots()
+    }
+  }
+  function bunnyGotCarrots() {
+    if (bunny.getLeft() < (carrot.x + 30) && (carrot.x + 30) < bunny.getLeft()+50) {
+      return true
+    } else {
+      return false
+    }
+  }
 }
  
