@@ -14,8 +14,8 @@ function Game(canvas) {
     bunny.draw(ctx)
     carrot.draw(ctx)
     wolf.draw(ctx)
-
   }
+
   let arrRight = 39
   let arrLeft = 37
   let arrUp = 38
@@ -42,6 +42,7 @@ function Game(canvas) {
       this.score++
       this.showScores()
       carrot = new Carrots()
+      house = new Houses()
     }
     this.showLevel()
   }
