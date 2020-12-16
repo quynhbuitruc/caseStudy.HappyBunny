@@ -14,16 +14,7 @@ function Game(canvas) {
     bunny.draw(ctx)
     carrot.draw(ctx)
     wolf.draw(ctx)
-    
-  }
 
-  this.score = 0
-  this.getScore = function () {
-    return this.score
-  }
-  this.showScores = function () {
-    let number = this.getScore()
-    document.getElementById("score").innerText = number
   }
 
   this.controlBunnyMove = function (keyCode) {
@@ -45,11 +36,31 @@ function Game(canvas) {
 
   this.calculateNextStatus = function () {
     if (bunnyGotCarrots() == true) {
-      this.score ++
+      this.score++
       this.showScores()
+      this.showLevel()
       carrot = new Carrots()
     }
   }
+
+  this.score = 0
+  this.showScores = function () {
+    document.getElementById("score").innerText = this.score
+  }
+
+  this.level = function () {
+    let levels = [0, 5, 10, 15, 30, 45, 60, 80, 100]
+    for (let i = levels.length - 1; i >= 0; i--) {
+      if (this.score >= levels[i]) {
+        return i
+      }
+    }
+  }
+
+  this.showLevel = function () {
+    document.getElementById("level").innerText = this.level()
+  }
+
   function bunnyGotCarrots() {
     if (bunny.getLeft() < (carrot.x + 30) && (carrot.x + 30) < bunny.getLeft() + 50) {
       if (bunny.getTop() < (carrot.y + 30) && (carrot.y + 30) < bunny.getTop() + 50) {
