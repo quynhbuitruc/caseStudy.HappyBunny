@@ -31,7 +31,7 @@ function Game(canvas) {
       case arrUp:
         bunny.moveUp(ctx)
         break
-      case arrUp:
+      case arrDown:
         bunny.moveDown(ctx)
         break
     }
