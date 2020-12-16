@@ -16,19 +16,22 @@ function Game(canvas) {
     wolf.draw(ctx)
 
   }
-
+  let arrRight = 39
+  let arrLeft = 37
+  let arrUp = 38
+  let arrDown = 40
   this.controlBunnyMove = function (keyCode) {
     switch (keyCode) {
-      case 39:
+      case arrRight:
         bunny.moveRight(ctx)
         break
-      case 37:
+      case arrLeft:
         bunny.moveLeft(ctx)
         break
-      case 38:
+      case arrUp:
         bunny.moveUp(ctx)
         break
-      case 40:
+      case arrUp:
         bunny.moveDown(ctx)
         break
     }
@@ -38,9 +41,9 @@ function Game(canvas) {
     if (bunnyGotCarrots() == true) {
       this.score++
       this.showScores()
-      this.showLevel()
       carrot = new Carrots()
     }
+    this.showLevel()
   }
 
   this.score = 0
@@ -62,8 +65,8 @@ function Game(canvas) {
   }
 
   function bunnyGotCarrots() {
-    if (bunny.getLeft() < (carrot.x + 30) && (carrot.x + 30) < bunny.getLeft() + 50) {
-      if (bunny.getTop() < (carrot.y + 30) && (carrot.y + 30) < bunny.getTop() + 50) {
+    if (bunny.getLeft() < carrot.x && carrot.x < bunny.getLeft() + 20) {
+      if (bunny.getTop() < carrot.y && carrot.y < bunny.getTop() + 20) {
         return true
       }
     } else {
