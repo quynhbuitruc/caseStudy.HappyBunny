@@ -5,11 +5,16 @@ function Game(canvas) {
 
   let bunny = new Rabits()
   let carrot = new Carrots()
+  let wolf = new Wolfs()
+  let house = new Houses()
 
   this.draw = function () {
     ctx.clearRect(0, 0, 550, 550)
+    house.draw(ctx)
     bunny.draw(ctx)
     carrot.draw(ctx)
+    wolf.draw(ctx)
+    
   }
 
   this.score = 0
