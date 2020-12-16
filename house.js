@@ -1,6 +1,6 @@
 function Houses () {
-    this.x = Math.round(Math.random() * 500)
-    this.y = Math.round(Math.random() * 500)
+    this.x = Math.round(Math.random() * 400)
+    this.y = Math.round(Math.random() * 400)
 
     let img = new Image()
     img.src = "bunny house.png"
