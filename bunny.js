@@ -15,25 +15,25 @@ function Rabits() {
     }
 
     this.moveRight = function (ctx) {
-        if (this.x + 50 < 550) {
+        if (this.x < 510) {
             this.x += 10
         }
         ctx.drawImage(img, this.x, this.y)
     }
     this.moveLeft = function (ctx) {
-        if (this.x > 10) {
+        if (this.x >= 10) {
             this.x -= 10
         }
         ctx.drawImage(img, this.x, this.y)
     }
     this.moveUp = function (ctx) {
-        if (this.y > 10) {
+        if (this.y >= 10) {
             this.y -= 10
         }
         ctx.drawImage(img, this.x, this.y)
     }
     this.moveDown = function (ctx) {
-        if (this.y + 50 < 550) {
+        if (this.y < 510) {
             this.y += 10
         }
         ctx.drawImage(img, this.x, this.y)
