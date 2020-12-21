@@ -20,6 +20,7 @@ function Game(canvas) {
   let arrLeft = 37
   let arrUp = 38
   let arrDown = 40
+
   this.controlBunnyMove = function (keyCode) {
     switch (keyCode) {
       case arrRight:
@@ -45,6 +46,12 @@ function Game(canvas) {
       house = new Houses()
     }
     this.showLevel()
+    if (bunnyIsOutOfHouse() == true) {
+      wolf.setTarget(bunny)
+      wolf.run()
+    } else {
+      wolf.leave()
+    }
   }
 
   this.score = 0
@@ -65,14 +72,29 @@ function Game(canvas) {
     document.getElementById("level").innerText = this.level()
   }
 
+  this.gameOver = function () {
+    if (wolf.x == bunny.x && wolf.y == bunny.y) {
+      alert ("GAME OVER !!!")
+    } 
+  }
+
   function bunnyGotCarrots() {
-    if (bunny.getLeft() < carrot.x && carrot.x < bunny.getLeft() + 20) {
-      if (bunny.getTop() < carrot.y && carrot.y < bunny.getTop() + 20) {
-        return true
-      }
+    if (bunny.getLeft() < carrot.x && carrot.x < bunny.getLeft() + 20
+      && bunny.getTop() < carrot.y && carrot.y < bunny.getTop() + 20) {
+      return true
     } else {
       return false
     }
+  }
+
+  function bunnyIsOutOfHouse() {
+    if (bunny.getLeft() < house.x + 50 && bunny.getLeft() > house.x &&
+      bunny.getTop() < house.y + 50 && bunny.getTop() > house.y) {
+      return false
+    } else {
+      return true
+    }
+
   }
 }
 
