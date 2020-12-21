@@ -11,4 +11,5 @@ function tick() {
     game.calculateNextStatus()
     game.draw()
     window.requestAnimationFrame(tick)
+    game.gameOver()
 }
