@@ -15,7 +15,7 @@ function Wolfs() {
             y: 500
         }
     ]
-    this.target = this.area[Math.round(Math.random() * 2)] //set random
+    this.target = this.area[Math.round(Math.random() * 2)]
 
     let img = new Image()
     img.src = "wolf.png"
