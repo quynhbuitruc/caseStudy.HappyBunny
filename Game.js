@@ -2,14 +2,16 @@ function Game(canvas) {
   this.canvas = canvas
 
   let ctx = this.canvas.getContext("2d");
+  ctx.canvas.width = window.innerWidth - 30
+  ctx.canvas.height = window.innerHeight / 2
 
   let bunny = new Rabits()
-  let carrot = new Carrots()
-  let wolf = new Wolfs()
-  let house = new Houses()
+  let carrot = new Carrots(ctx)
+  let wolf = new Wolfs(ctx)
+  let house = new Houses(ctx)
 
   this.draw = function () {
-    ctx.clearRect(0, 0, 550, 550)
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     house.draw(ctx)
     bunny.draw(ctx)
     carrot.draw(ctx)
@@ -42,8 +44,8 @@ function Game(canvas) {
     if (bunnyGotCarrots() == true) {
       this.score++
       this.showScores()
-      carrot = new Carrots()
-      house = new Houses()
+      carrot = new Carrots(ctx)
+      house = new Houses(ctx)
     }
     this.showLevel()
     if (bunnyIsOutOfHouse() == true) {
@@ -74,8 +76,8 @@ function Game(canvas) {
 
   this.gameOver = function () {
     if (wolf.x == bunny.x && wolf.y == bunny.y) {
-      alert ("GAME OVER !!!")
-    } 
+      alert("GAME OVER !!!")
+    }
   }
 
   function bunnyGotCarrots() {
