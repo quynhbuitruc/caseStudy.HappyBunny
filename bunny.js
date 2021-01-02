@@ -15,7 +15,7 @@ function Rabits() {
     }
 
     this.moveRight = function (ctx) {
-        if (this.x < 510) {
+        if (this.x < (ctx.canvas.width - 80)) {
             this.x += 10
         }
         ctx.drawImage(img, this.x, this.y)
@@ -33,7 +33,7 @@ function Rabits() {
         ctx.drawImage(img, this.x, this.y)
     }
     this.moveDown = function (ctx) {
-        if (this.y < 500) {
+        if (this.y < (ctx.canvas.height - 50)) {
             this.y += 10
         }
         ctx.drawImage(img, this.x, this.y)
