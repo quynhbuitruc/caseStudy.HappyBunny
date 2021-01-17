@@ -50,9 +50,9 @@ function Game(canvas) {
     this.showLevel()
     if (bunnyIsOutOfHouse() == true) {
       wolf.setTarget(bunny)
-      wolf.run()
+      wolf.run(house)
     } else {
-      wolf.leave()
+      wolf.leave(house)
     }
   }
 
