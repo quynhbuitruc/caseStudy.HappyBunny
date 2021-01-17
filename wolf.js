@@ -25,28 +25,57 @@ function Wolfs(ctx) {
         ctx.drawImage(img, this.x, this.y)
     }
 
-    this.run = function () {
+    this.run = function (house) {
         if (this.x !== this.target.x) {
             if (this.x < this.target.x) {
-                this.x += this.moveDistance
+                if (this.isHittingHouse(house) == true) {
+                    this.y += this.moveDistance
+                } else {
+                    this.x += this.moveDistance
+                }
             } else {
-                this.x -= this.moveDistance
+                if (this.isHittingHouse(house) == true) {
+                    this.y += this.moveDistance
+                } else {
+                    this.x -= this.moveDistance
+                }
             }
         } else if (this.y !== this.target.y) {
             if (this.y < this.target.y) {
-                this.y += this.moveDistance
+                if (this.isHittingHouse(house) == true) {
+                    this.x += this.moveDistance
+                } else {
+                    this.y += this.moveDistance
+                }
             } else {
-                this.y -= this.moveDistance
+                if (this.isHittingHouse(house) == true) {
+                    while ((house.x - 50) < this.x && this.x < (house.x + 100)) {
+                        this.x += this.moveDistance
+                    }
+                    
+                } else {
+                    this.y -= this.moveDistance
+                }
             }
         }
+    }
+
+    this.isHittingHouse = function (house) {
+        if ((house.x - 50) < this.x && this.x < (house.x + 100)) {
+            if ((house.y - 50) < this.y && this.y < (house.y + 100)) {
+                console.log(this.x, this.y)
+                return true
+            }
+        }
+        return false
     }
 
     this.setTarget = function (target) {
         this.target = target
     }
-    this.leave = function () {
+    this.leave = function (house) {
         this.target = this.area[0]
-        this.run()
+        this.run(house)
 
     }
 }
