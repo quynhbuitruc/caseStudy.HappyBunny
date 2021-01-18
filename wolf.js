@@ -63,7 +63,6 @@ function Wolfs(ctx) {
     this.isHittingHouse = function (house) {
         if ((house.x - 50) < this.x && this.x < (house.x + 100)) {
             if ((house.y - 50) < this.y && this.y < (house.y + 100)) {
-                console.log(this.x, this.y)
                 return true
             }
         }
