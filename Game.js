@@ -12,10 +12,10 @@ function Game(canvas) {
 
   this.draw = function () {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    wolf.draw(ctx)
     house.draw(ctx)
     bunny.draw(ctx)
     carrot.draw(ctx)
-    wolf.draw(ctx)
   }
 
   let arrRight = 39
@@ -74,9 +74,14 @@ function Game(canvas) {
     document.getElementById("level").innerText = this.level()
   }
 
+  let imageGameOver = new Image()
+  imageGameOver.src = "gameover.gif"
   this.gameOver = function () {
     if (wolf.x == bunny.x && wolf.y == bunny.y) {
-      alert("GAME OVER !!!")
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+      ctx.drawImage(imageGameOver,0,0)
+      document.getElementById("level").innerText = 0
+      document.getElementById("score").innerText = 0
     }
   }
 
