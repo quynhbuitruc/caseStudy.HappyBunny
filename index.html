@@ -9,6 +9,32 @@
         canvas {
             border: 3px solid darkgreen;
         }
+
+        .show {
+            font-size: 30px;
+            font-style: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .directionButtons {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        td {
+            text-align: center;
+            width: 100px;
+            height: 50px;
+        }
+
     </style>
     <script src="Game.js"></script>
     <script src="bunny.js"></script>
@@ -19,14 +45,37 @@
 
 <body>
     <canvas id="game"></canvas>
-    <button id="left">Left</button>
-    <button id="right">Right</button>
-    <button id="up">Up</button>
-    <button id="down">Down</button>
-    <br>Score:
-    <p id="score"> 0 </p>
-    <br>Level:
-    <p id="level"> 1 </p>
+    <br>
+    <table>
+        <tr>
+            <td class="show">Score:</td>
+            <td id="score" class="show"> 0</td>
+            <td></td>
+            <td class="show">Level:</td>
+            <td id="level" class="show"> 0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><button id="up" class="directionButtons">Up</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button id="left" class="directionButtons">Left</button></td>
+            <td></td>
+            <td><button id="right" class="directionButtons">Right</button></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><button id="down" class="directionButtons">Down</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
     <script src="main.js"></script>
 </body>
 
