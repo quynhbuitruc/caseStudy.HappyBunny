@@ -24,19 +24,21 @@ function Game(canvas) {
   let arrDown = 40
 
   this.controlBunnyMove = function (keyCode) {
-    switch (keyCode) {
-      case arrRight:
-        bunny.moveRight(ctx)
-        break
-      case arrLeft:
-        bunny.moveLeft(ctx)
-        break
-      case arrUp:
-        bunny.moveUp(ctx)
-        break
-      case arrDown:
-        bunny.moveDown(ctx)
-        break
+    if (!isGameOver()) {
+      switch (keyCode) {
+        case arrRight:
+          bunny.moveRight(ctx)
+          break
+        case arrLeft:
+          bunny.moveLeft(ctx)
+          break
+        case arrUp:
+          bunny.moveUp(ctx)
+          break
+        case arrDown:
+          bunny.moveDown(ctx)
+          break
+      }
     }
   }
 
@@ -77,11 +79,21 @@ function Game(canvas) {
   let imageGameOver = new Image()
   imageGameOver.src = "gameover.gif"
   this.gameOver = function () {
-    if (wolf.x == bunny.x && wolf.y == bunny.y) {
+    if (isGameOver()) {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-      ctx.drawImage(imageGameOver,0,0)
-      document.getElementById("level").innerText = 0
+      ctx.drawImage(imageGameOver, (ctx.canvas.width/2)-160, (ctx.canvas.height/2)-160)
+      
       document.getElementById("score").innerText = 0
+      this.score = 0
+      document.getElementById("level").innerText = 0
+    }
+  }
+
+  function isGameOver() {
+    if (wolf.x == bunny.x && wolf.y == bunny.y) {
+      return true
+    } else {
+      return false
     }
   }
 
@@ -95,13 +107,12 @@ function Game(canvas) {
   }
 
   function bunnyIsOutOfHouse() {
-    if (bunny.getLeft() < house.x + 50 && bunny.getLeft() > house.x &&
-      bunny.getTop() < house.y + 50 && bunny.getTop() > house.y) {
+    if ((bunny.getLeft()+40 ) < (house.x + 100) && bunny.getLeft() > house.x &&
+      (bunny.getTop()+50) < (house.y + 100) && bunny.getTop() > house.y) {
       return false
     } else {
       return true
     }
-
   }
 }
 
