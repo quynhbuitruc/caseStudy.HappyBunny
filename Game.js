@@ -22,7 +22,6 @@ function Game(canvas) {
   let arrLeft = 37
   let arrUp = 38
   let arrDown = 40
-
   this.controlBunnyMove = function (keyCode) {
     if (!isGameOver()) {
       switch (keyCode) {
@@ -42,6 +41,27 @@ function Game(canvas) {
     }
   }
 
+  document.getElementById("up").addEventListener("mousedown", function () {
+    if (!isGameOver()) {
+      bunny.moveUp(ctx)
+    }
+  })
+  document.getElementById("down").addEventListener("mousedown", function () {
+    if (!isGameOver()) {
+      bunny.moveDown(ctx)
+    }
+  })
+  document.getElementById("left").addEventListener("mousedown", function () {
+    if (!isGameOver()) {
+      bunny.moveLeft(ctx)
+    }
+  })
+  document.getElementById("right").addEventListener("mousedown", function () {
+    if (!isGameOver()) {
+      bunny.moveRight(ctx)
+    }
+  })
+
   this.calculateNextStatus = function () {
     if (bunnyGotCarrots() == true) {
       this.score++
@@ -49,6 +69,7 @@ function Game(canvas) {
       carrot = new Carrots(ctx)
       house = new Houses(ctx)
     }
+
     this.showLevel()
     if (bunnyIsOutOfHouse() == true) {
       wolf.setTarget(bunny)
@@ -81,8 +102,7 @@ function Game(canvas) {
   this.gameOver = function () {
     if (isGameOver()) {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-      ctx.drawImage(imageGameOver, (ctx.canvas.width/2)-160, (ctx.canvas.height/2)-160)
-      
+      ctx.drawImage(imageGameOver, (ctx.canvas.width / 2) - 160, (ctx.canvas.height / 2) - 160)
       document.getElementById("score").innerText = 0
       this.score = 0
       document.getElementById("level").innerText = 0
@@ -98,8 +118,8 @@ function Game(canvas) {
   }
 
   function bunnyGotCarrots() {
-    if (bunny.getLeft() < carrot.x && carrot.x < bunny.getLeft() + 20
-      && bunny.getTop() < carrot.y && carrot.y < bunny.getTop() + 20) {
+    if (bunny.getLeft() < carrot.x && carrot.x < bunny.getLeft() + 25
+      && bunny.getTop() < carrot.y && carrot.y < bunny.getTop() + 25) {
       return true
     } else {
       return false
@@ -107,8 +127,8 @@ function Game(canvas) {
   }
 
   function bunnyIsOutOfHouse() {
-    if ((bunny.getLeft()+40 ) < (house.x + 100) && bunny.getLeft() > house.x &&
-      (bunny.getTop()+50) < (house.y + 100) && bunny.getTop() > house.y) {
+    if ((bunny.getLeft() + 40) < (house.x + 100) && bunny.getLeft() > house.x &&
+      (bunny.getTop() + 50) < (house.y + 100) && bunny.getTop() > house.y) {
       return false
     } else {
       return true
