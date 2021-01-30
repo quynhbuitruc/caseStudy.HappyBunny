@@ -22,6 +22,11 @@ function Game(canvas) {
   let arrLeft = 37
   let arrUp = 38
   let arrDown = 40
+  let bunnyGoingUp = false
+  let bunnyGoingDown = false
+  let bunnyGoingLeft = false
+  let bunnyGoingRight = false
+
   this.controlBunnyMove = function (keyCode) {
     if (!isGameOver()) {
       switch (keyCode) {
@@ -37,30 +42,61 @@ function Game(canvas) {
         case arrDown:
           bunny.moveDown(ctx)
           break
+        case 0:
+          bunny.moveDown(ctx)
       }
     }
   }
 
   document.getElementById("up").addEventListener("mousedown", function () {
     if (!isGameOver()) {
-      bunny.moveUp(ctx)
+      bunnyGoingUp = true
+    }
+  })
+  document.getElementById("up").addEventListener("mouseup", function () {
+    if (!isGameOver()) {
+      bunnyGoingUp = false
     }
   })
   document.getElementById("down").addEventListener("mousedown", function () {
     if (!isGameOver()) {
-      bunny.moveDown(ctx)
+      bunnyGoingDown = true
+    }
+  })
+  document.getElementById("down").addEventListener("mouseup", function () {
+    if (!isGameOver()) {
+      bunnyGoingDown = false
     }
   })
   document.getElementById("left").addEventListener("mousedown", function () {
     if (!isGameOver()) {
-      bunny.moveLeft(ctx)
+      bunnyGoingLeft = true
+    }
+  })
+  document.getElementById("left").addEventListener("mouseup", function () {
+    if (!isGameOver()) {
+      bunnyGoingLeft = false
     }
   })
   document.getElementById("right").addEventListener("mousedown", function () {
     if (!isGameOver()) {
-      bunny.moveRight(ctx)
+      bunnyGoingRight = true
     }
   })
+  document.getElementById("right").addEventListener("mouseup", function () {
+    if (!isGameOver()) {
+      bunnyGoingRight = false
+    }
+  })
+
+
+  function leftMouseButtonBeingPressed(keyCode) {
+    if (keyCode == 0) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   this.calculateNextStatus = function () {
     if (bunnyGotCarrots() == true) {
@@ -71,11 +107,28 @@ function Game(canvas) {
     }
 
     this.showLevel()
+
     if (bunnyIsOutOfHouse() == true) {
       wolf.setTarget(bunny)
       wolf.run(house)
     } else {
       wolf.leave(house)
+    }
+
+    if (bunnyGoingUp) {
+      bunny.moveUp(ctx)
+    }
+
+    if (bunnyGoingDown) {
+      bunny.moveDown(ctx)
+    }
+
+    if (bunnyGoingLeft) {
+      bunny.moveLeft(ctx)
+    }
+
+    if (bunnyGoingRight) {
+      bunny.moveRight(ctx)
     }
   }
 
